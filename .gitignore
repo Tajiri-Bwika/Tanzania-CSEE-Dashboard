@@ -1,0 +1,40 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments and local secrets
+.env
+.env.*
+venv/
+.venv/
+env/
+
+# Streamlit secrets only
+Analysis&Dashboard/.streamlit/secrets.toml
+
+# Logs
+*.log
+streamlit_*.log
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local history / backup files
+change_history/
+change_log.txt
+testing_documentation.txt
+MODIFICATION_LOG.md
+
+# Tests
+test/
+tests/
+
+# Test/cache clutter
+.pytest_cache/
+.ipynb_checkpoints/

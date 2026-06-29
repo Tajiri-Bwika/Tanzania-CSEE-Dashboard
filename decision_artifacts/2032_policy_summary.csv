@@ -1,0 +1,4 @@
+scenario_id,scenario_name,growth_pct,target_year,current_candidates,projected_candidates,candidate_increase,high_risk_regions,school_rank_increases,region_rank_increases,data_origin,scenario_type
+A,Conservative Growth,10.0,2032,563330.0,619663.0,56333.00000000006,26,3065,12,synthetic,hypothetical_policy_scenario
+B,Moderate Growth,25.0,2032,563330.0,704162.5,140832.5,28,3086,11,synthetic,hypothetical_policy_scenario
+C,High Growth,40.0,2032,563330.0,788662.0,225331.99999999994,31,3166,11,synthetic,hypothetical_policy_scenario

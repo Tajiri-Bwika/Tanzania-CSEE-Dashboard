@@ -1,0 +1,9 @@
+Target,Model,MAE,RMSE,R2,MAPE,Notes,Status,Selected
+GPA,Baseline Linear Regression,0.20229729991887072,0.2662460988696377,0.8458405624842299,6.373450260173251,Existing baseline: linear regression using engineered lag and region features.,Trained,True
+GPA,Random Forest,0.20447137350285907,0.26890942205922963,0.8427409493563498,6.52954935155417,Tree ensemble that captures non-linear relationships and interactions.,Trained,False
+GPA,XGBoost,0.2037568145945547,0.2667646516381274,0.8452394821257643,6.55644016729038,Gradient-boosted decision trees with regularisation.,Trained,False
+GPA,LSTM,0.24775011569507627,0.3262934760128269,0.7681976058523843,8.675714296649065,Sequence model trained on 3-year windows; constrained by short annual history.,Trained,False
+Pass Rate,Baseline Linear Regression,5.094791982535286,7.53945722773167,0.14336287772656342,6.059413557165667,Existing baseline: linear regression using engineered lag and region features.,Trained,False
+Pass Rate,Random Forest,4.524198923587243,7.187137829517398,0.22155367250590907,5.463273872956337,Tree ensemble that captures non-linear relationships and interactions.,Trained,True
+Pass Rate,XGBoost,4.521121134964029,7.247720147577525,0.20837489490596084,5.475969499748299,Gradient-boosted decision trees with regularisation.,Trained,False
+Pass Rate,LSTM,4.269073463057335,7.188250163486777,0.22498626501464047,5.335016833509496,Sequence model trained on 3-year windows; constrained by short annual history.,Trained,False

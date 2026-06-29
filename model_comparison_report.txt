@@ -1,0 +1,155 @@
+NECTA Dashboard ML Model Comparison Report
+================================================
+
+Baseline model: Linear Regression using engineered lag features and region encoding.
+Added models: Random Forest, XGBoost, LSTM.
+Evaluation metrics: MAE, RMSE, R2, MAPE.
+Selection rule: lowest RMSE, with MAE/MAPE checks and simpler model preference if RMSE is within 3%.
+
+Model comparison and evaluation metrics
+------------------------------------------------
+   Target                      Model      MAE     RMSE       R2     MAPE  Status  Selected
+      GPA Baseline Linear Regression 0.202297 0.266246 0.845841 6.373450 Trained      True
+      GPA              Random Forest 0.204471 0.268909 0.842741 6.529549 Trained     False
+      GPA                    XGBoost 0.203757 0.266765 0.845239 6.556440 Trained     False
+      GPA                       LSTM 0.247750 0.326293 0.768198 8.675714 Trained     False
+Pass Rate Baseline Linear Regression 5.094792 7.539457 0.143363 6.059414 Trained     False
+Pass Rate              Random Forest 4.524199 7.187138 0.221554 5.463274 Trained      True
+Pass Rate                    XGBoost 4.521121 7.247720 0.208375 5.475969 Trained     False
+Pass Rate                       LSTM 4.269073 7.188250 0.224986 5.335017 Trained     False
+
+Selected best model for GPA: Baseline Linear Regression
+Baseline Linear Regression was selected because it achieved the lowest RMSE (0.2662), with MAE 0.2023 and MAPE 6.37%.
+
+Best-model forecast values for GPA (Baseline Linear Regression)
+          region  year      gpa
+          ARUSHA  2026 3.001909
+          ARUSHA  2027 2.901133
+   DAR ES SALAAM  2026 3.184326
+   DAR ES SALAAM  2027 3.101547
+          DODOMA  2026 3.502353
+          DODOMA  2027 3.427000
+           GEITA  2026 3.301266
+           GEITA  2027 3.218935
+          IRINGA  2026 3.248439
+          IRINGA  2027 3.175631
+          KAGERA  2026 3.266048
+          KAGERA  2027 3.191772
+ KASKAZINI PEMBA  2026 3.839258
+ KASKAZINI PEMBA  2027 3.805270
+KASKAZINI UNGUJA  2026 3.811602
+KASKAZINI UNGUJA  2027 3.778698
+          KATAVI  2026 3.573318
+          KATAVI  2027 3.498618
+          KIGOMA  2026 3.412570
+          KIGOMA  2027 3.348468
+     KILIMANJARO  2026 3.122799
+     KILIMANJARO  2027 3.039440
+    KUSINI PEMBA  2026 3.815482
+    KUSINI PEMBA  2027 3.781059
+   KUSINI UNGUJA  2026 3.537933
+   KUSINI UNGUJA  2027 3.467541
+           LINDI  2026 3.552403
+           LINDI  2027 3.468442
+         MANYARA  2026 3.224543
+         MANYARA  2027 3.130221
+            MARA  2026 3.489256
+            MARA  2027 3.419148
+           MBEYA  2026 3.156460
+           MBEYA  2027 3.057919
+ MJINI MAGHARIBI  2026 3.291738
+ MJINI MAGHARIBI  2027 3.229459
+        MOROGORO  2026 3.520196
+        MOROGORO  2027 3.451049
+          MTWARA  2026 3.632521
+          MTWARA  2027 3.557692
+          MWANZA  2026 3.058106
+          MWANZA  2027 2.965568
+          NJOMBE  2026 3.233563
+          NJOMBE  2027 3.159151
+           PWANI  2026 3.290970
+           PWANI  2027 3.219803
+           RUKWA  2026 3.362124
+           RUKWA  2027 3.277871
+          RUVUMA  2026 3.477676
+          RUVUMA  2027 3.413912
+       SHINYANGA  2026 3.341284
+       SHINYANGA  2027 3.263547
+          SIMIYU  2026 3.304873
+          SIMIYU  2027 3.213973
+         SINGIDA  2026 3.499097
+         SINGIDA  2027 3.429612
+          SONGWE  2026 3.421695
+          SONGWE  2027 3.352356
+          TABORA  2026 3.392925
+          TABORA  2027 3.317068
+           TANGA  2026 3.570740
+           TANGA  2027 3.511896
+
+Selected best model for Pass Rate: Random Forest
+Random Forest was selected because it achieved the lowest RMSE (7.1871), with MAE 4.5242 and MAPE 5.46%.
+
+Best-model forecast values for Pass Rate (Random Forest)
+          region  year  pass_rate
+          ARUSHA  2026  96.904227
+          ARUSHA  2027  97.040026
+   DAR ES SALAAM  2026  89.911058
+   DAR ES SALAAM  2027  90.828567
+          DODOMA  2026  94.575250
+          DODOMA  2027  94.654095
+           GEITA  2026  96.286854
+           GEITA  2027  96.363055
+          IRINGA  2026  95.485931
+          IRINGA  2027  95.440266
+          KAGERA  2026  96.417052
+          KAGERA  2027  96.384359
+ KASKAZINI PEMBA  2026  90.519058
+ KASKAZINI PEMBA  2027  91.058452
+KASKAZINI UNGUJA  2026  91.674131
+KASKAZINI UNGUJA  2027  92.712537
+          KATAVI  2026  94.291142
+          KATAVI  2027  94.434861
+          KIGOMA  2026  94.467543
+          KIGOMA  2027  94.384905
+     KILIMANJARO  2026  96.932919
+     KILIMANJARO  2027  96.791745
+    KUSINI PEMBA  2026  88.278931
+    KUSINI PEMBA  2027  88.038226
+   KUSINI UNGUJA  2026  93.899826
+   KUSINI UNGUJA  2027  94.423748
+           LINDI  2026  95.236067
+           LINDI  2027  94.718497
+         MANYARA  2026  97.862004
+         MANYARA  2027  97.783920
+            MARA  2026  93.576686
+            MARA  2027  93.627448
+           MBEYA  2026  96.802154
+           MBEYA  2027  96.770249
+ MJINI MAGHARIBI  2026  91.383007
+ MJINI MAGHARIBI  2027  92.092619
+        MOROGORO  2026  92.822981
+        MOROGORO  2027  92.725627
+          MTWARA  2026  94.582829
+          MTWARA  2027  94.406071
+          MWANZA  2026  96.980657
+          MWANZA  2027  96.904417
+          NJOMBE  2026  96.081665
+          NJOMBE  2027  96.056073
+           PWANI  2026  93.354154
+           PWANI  2027  93.741504
+           RUKWA  2026  95.279038
+           RUKWA  2027  95.260502
+          RUVUMA  2026  95.200935
+          RUVUMA  2027  95.006673
+       SHINYANGA  2026  95.816782
+       SHINYANGA  2027  95.585648
+          SIMIYU  2026  97.147921
+          SIMIYU  2027  96.845141
+         SINGIDA  2026  95.086708
+         SINGIDA  2027  94.924656
+          SONGWE  2026  95.912358
+          SONGWE  2027  95.762822
+          TABORA  2026  96.348515
+          TABORA  2027  96.270719
+           TANGA  2026  94.350786
+           TANGA  2027  94.249986

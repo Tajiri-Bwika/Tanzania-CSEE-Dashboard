@@ -1,0 +1,3 @@
+target,target_label,best_model,selection_reason,test_year
+gpa,GPA,Baseline Linear Regression,"Baseline Linear Regression was selected because it achieved the lowest RMSE (0.2662), with MAE 0.2023 and MAPE 6.37%.",2025
+pass_rate,Pass Rate,Random Forest,"Random Forest was selected because it achieved the lowest RMSE (7.1871), with MAE 4.5242 and MAPE 5.46%.",2025

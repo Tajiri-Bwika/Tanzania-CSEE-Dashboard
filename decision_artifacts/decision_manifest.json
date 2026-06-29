@@ -1,0 +1,39 @@
+{
+  "decision_engine_version": "1.0.0",
+  "generated_at_utc": "2026-06-24T14:55:24+00:00",
+  "generation_mode": "offline",
+  "source_files": [
+    "school_combined_2016_2025_national.csv",
+    "subject_combined_2016_2025_national.csv"
+  ],
+  "source_rows": {
+    "school": 51236,
+    "subject": 522265
+  },
+  "year_coverage": {
+    "school_min": 2016,
+    "school_max": 2025,
+    "subject_min": 2016,
+    "subject_max": 2025
+  },
+  "artifact_rows": {
+    "priority_rankings.csv": 6075,
+    "regional_priority_rankings.csv": 31,
+    "school_risk_scores.csv": 6075,
+    "regional_risk_scores.csv": 31,
+    "intervention_recommendations.csv": 6075
+  },
+  "priority_weights": {
+    "severity": 0.5,
+    "trend_decline": 0.3,
+    "recoverability": 0.2
+  },
+  "risk_weights": {
+    "pass_rate_decline": 0.4,
+    "subject_failure": 0.3,
+    "trend_instability": 0.3
+  },
+  "scenario_disclosure": "Intervention improvement ranges are assumption-based planning scenario estimates, not observed, causal, or guaranteed outcomes.",
+  "data_origin_policy": "Decision scores use observed-derived data. Any future simulated outcome must remain separate from training data and use data_origin=synthetic.",
+  "policy_scenario_policy": "Any 2032 cohort-pressure output is a configurable hypothetical policy scenario, not a confirmed government policy outcome."
+}
