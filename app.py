@@ -14,6 +14,10 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
+st.markdown(
+    '<meta name="google-site-verification" content="OYOchum_JhOFGE4Ey3FiwOiw3NRz84_Sk2j1UV5V_vY" />',
+    unsafe_allow_html=True,
+)
 
 from data_loader import build_options, load_data
 from pages.dashboard import render_dashboard
