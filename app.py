@@ -5,6 +5,20 @@ import sys
 
 import streamlit as st
 
+
+def add_google_site_verification():
+    """Inject Google Search Console verification into Streamlit's HTML head."""
+    verification_tag = '<meta name="google-site-verification" content="OYOchum_JhOFGE4Ey3FiwOiw3NRz84_Sk2j1UV5V_vY" />'
+    index_path = Path(st.__file__).parent / "static" / "index.html"
+    html = index_path.read_text(encoding="utf-8")
+
+    if "google-site-verification" not in html:
+        html = html.replace("<head>", f"<head>\n    {verification_tag}", 1)
+        index_path.write_text(html, encoding="utf-8")
+
+
+add_google_site_verification()
+
 APP_DIR = Path(__file__).resolve().parent
 if str(APP_DIR) not in sys.path:
     sys.path.insert(0, str(APP_DIR))
@@ -13,10 +27,6 @@ st.set_page_config(
     page_title="NECTA CSEE Dashboard",
     layout="wide",
     initial_sidebar_state="collapsed",
-)
-st.markdown(
-    '<meta name="google-site-verification" content="OYOchum_JhOFGE4Ey3FiwOiw3NRz84_Sk2j1UV5V_vY" />',
-    unsafe_allow_html=True,
 )
 
 from data_loader import build_options, load_data
