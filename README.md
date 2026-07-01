@@ -238,17 +238,16 @@ Analysis&Dashboard/
 
 ## Installation
 
-The verified environment uses Python 3.13.11 in the `tajir` Conda environment.
+The verified environment uses Python 3.13.11. 
 
 ```powershell
-cd "C:\Users\Tajiri\Downloads\FYP\NATIONAL\CSEE\Analysis&Dashboard"
-& "$HOME\anaconda3\envs\tajir\python.exe" -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Running The Dashboard
 
 ```powershell
-& "$HOME\anaconda3\envs\tajir\python.exe" -m streamlit run app.py
+streamlit run app.py
 ```
 
 `app.py` is the only production dashboard entry point.
@@ -259,7 +258,7 @@ Priority, risk, and intervention outputs are generated explicitly outside the
 normal Streamlit import path:
 
 ```powershell
-& "$HOME\anaconda3\envs\tajir\python.exe" build_decision_artifacts.py
+ build_decision_artifacts.py
 ```
 
 The builder reads the validated national CSVs and writes versioned outputs to
@@ -281,7 +280,7 @@ Any future simulated outcomes must remain in separate artifacts and use
 Generate the three scenarios explicitly:
 
 ```powershell
-& "$HOME\anaconda3\envs\tajir\python.exe" build_policy_artifacts.py
+ build_policy_artifacts.py
 ```
 
 The process writes four files to `decision_artifacts/`:
@@ -303,7 +302,7 @@ the complete research and software design.
 ## Running Tests
 
 ```powershell
-& "$HOME\anaconda3\envs\tajir\python.exe" tests\run_dashboard_tests.py
+tests\run_dashboard_tests.py
 ```
 
 The runner covers Functional, Integration, User Interface, Error Handling, and
@@ -350,7 +349,6 @@ The following should not appear in a clean submitted copy:
 - `__pycache__/` and other generated Python caches
 - `.pytest_cache/`
 - temporary Streamlit logs
-- `.git/`, `.agents/`, and `.codex/`
 - local virtual environments and IDE settings
 
 Rollback snapshots in `change_history/` are useful during development but can
