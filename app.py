@@ -21,7 +21,7 @@ from pages.policy_planning import render_policy_planning
 from pages.rankings import render_rankings
 from pages.school import render_school
 from pages.subject import render_subject
-from styles import apply_styles, render_top_nav
+from styles import apply_styles, render_feedback_button, render_top_nav
 
 
 apply_styles()
@@ -58,6 +58,7 @@ if language not in language_options:
 
 st.session_state["chart_interpretation_language"] = language
 render_top_nav(page, language)
+render_feedback_button()
 
 if page == "Dashboard":
     render_dashboard(school_df, subject_df, all_regions, all_years, all_subjects)

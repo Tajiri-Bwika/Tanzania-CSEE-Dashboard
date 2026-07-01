@@ -1,11 +1,21 @@
 """Provide the shared responsive visual system and HTML UI components."""
 
+import base64
 import html
+from pathlib import Path
 import textwrap
 from urllib.parse import quote
 
 import streamlit as st
 
+
+FEEDBACK_FORM_URL = "https://forms.gle/gXPQu2h2PkKPuJEt5"
+FEEDBACK_ICON_CANDIDATES = (
+    Path(__file__).resolve().parent / "assets" / "feedbck_icon.png",
+    Path(__file__).resolve().parent / "assets" / "feedback_icon.png",
+    Path(__file__).resolve().parent / "feedbck_icon.png",
+    Path(__file__).resolve().parent / "feedback_icon.png",
+)
 
 CSS = r"""
 <style>
@@ -781,6 +791,80 @@ CSS = r"""
         border-color: #ffffff;
     }
 
+    .feedback-floating-link {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 100500;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 48px;
+        max-width: calc(100vw - 28px);
+        box-sizing: border-box;
+        padding: 8px 16px 8px 8px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #06111f 0%, #102a43 62%, #063f3a 100%);
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 18px 36px rgba(2, 6, 23, 0.28);
+        text-decoration: none !important;
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: 0;
+        white-space: nowrap;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .feedback-floating-link:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #081a2d 0%, #173a5c 62%, #0f5e58 100%);
+        box-shadow: 0 22px 44px rgba(2, 6, 23, 0.34);
+    }
+
+    .feedback-floating-link:focus-visible {
+        outline: 3px solid #fcd116;
+        outline-offset: 4px;
+    }
+
+    .feedback-floating-icon,
+    .feedback-fallback-icon {
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        border-radius: 11px;
+        background: #06111f;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+    }
+
+    .feedback-floating-icon {
+        display: block;
+        object-fit: cover;
+    }
+
+    .feedback-fallback-icon {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .feedback-floating-text {
+        color: #ffffff;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
     @media (max-width: 1100px) {
         .block-container {
             max-width: 100%;
@@ -974,6 +1058,23 @@ CSS = r"""
 
         .insight-value {
             font-size: 22px;
+        }
+
+        .feedback-floating-link {
+            right: 12px;
+            bottom: 12px;
+            min-height: 44px;
+            gap: 8px;
+            padding: 7px 12px 7px 7px;
+            font-size: 12.5px;
+        }
+
+        .feedback-floating-icon,
+        .feedback-fallback-icon {
+            width: 30px;
+            height: 30px;
+            flex-basis: 30px;
+            border-radius: 10px;
         }
     }
     </style>
@@ -1227,6 +1328,44 @@ def render_sidebar_brand():
             <div class="pro-sidebar-title">NECTA Data Intelligence</div>
             <div class="pro-sidebar-subtitle">Executive analytics for CSEE school, subject, regional and predictive performance.</div>
         </div>
+        """
+    )
+
+
+def _feedback_icon_markup():
+    """Return the uploaded feedback icon or a CSS flag fallback."""
+    for icon_path in FEEDBACK_ICON_CANDIDATES:
+        if not icon_path.exists():
+            continue
+        try:
+            encoded_icon = base64.b64encode(icon_path.read_bytes()).decode("ascii")
+        except OSError:
+            continue
+        return (
+            '<img class="feedback-floating-icon" '
+            f'src="data:image/png;base64,{encoded_icon}" '
+            'alt="" aria-hidden="true" loading="lazy">'
+        )
+    return (
+        '<span class="feedback-fallback-icon" aria-hidden="true">'
+        '<span class="tz-flag"></span>'
+        '</span>'
+    )
+
+
+def render_feedback_button():
+    """Render the persistent external feedback link."""
+    render_html(
+        f"""
+        <a class="feedback-floating-link"
+           href="{html.escape(FEEDBACK_FORM_URL, quote=True)}"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Complete Feedback! Opens Google Form in a new tab">
+            {_feedback_icon_markup()}
+            <span class="feedback-floating-text">Complete Feedback!</span>
+            <span class="sr-only">Opens Google Form in a new tab</span>
+        </a>
         """
     )
 
