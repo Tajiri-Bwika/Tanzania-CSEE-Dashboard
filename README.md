@@ -231,10 +231,7 @@ Analysis&Dashboard/
 |-- tests/run_dashboard_tests.py   # Automated test runner
 |-- .streamlit/config.toml         # Streamlit configuration
 |-- requirements.txt               # Python dependencies
-|-- testing_documentation.txt      # Generated test evidence
-|-- change_log.txt                 # Detailed audit trail
-`-- MODIFICATION_LOG.md            # Concise feature history
-```
+|-- testing_documentation.txt      # test evidence
 
 ## Installation
 
@@ -310,74 +307,12 @@ Performance testing. User Acceptance Testing is intentionally excluded.
 Results are written to `testing_documentation.txt`.
 
 ## Limitations
-
-- Historical source layouts differ across examination years.
-- The 38 unmatched school-region rows require authoritative upstream mapping.
-- Forecasts describe expected direction under continuing patterns and do not
-  explain causes.
-- Pass-rate model performance is weaker than GPA model performance and should
-  be interpreted cautiously.
-- Automated tests inspect rendered Streamlit elements and responsive CSS, but
-  final pixel-level checks still require a browser at target viewport sizes.
-- Retraining can be computationally expensive and requires optional model
-  dependencies.
-- Intervention ranges are planning assumptions and require stakeholder or
-  experimental validation before operational use.
-- The 2032 simulator applies national growth assumptions and does not represent
-  confirmed local enrollment trajectories.
-- Scenario outputs support investigation and planning; they are not official
-  results or automatic allocation decisions.
+- Pass-rate model performance is weaker than GPA model performance and should be interpreted cautiously.
+- Intervention ranges are planning assumptions and require stakeholder or experimental validation before operational use.
+- The 2032 simulator applies national growth assumptions and does not represent confirmed local enrollment trajectories.
+- Scenario outputs support investigation and planning; they are not official results or automatic allocation decisions.
 
 ## Future Improvements
-
-- Resolve unmatched historical regions from an authoritative school registry.
-- Add documented confidence intervals to forecast artifacts.
 - Add causal or explanatory research for regional and subject performance gaps.
-- Introduce automated browser screenshots for visual-regression testing.
 - Add accessible downloadable reports for school and policy users.
-- Expand bilingual coverage from chart interpretations to every UI label.
-- Add localized scenario growth assumptions when authoritative demographic
-  evidence becomes available.
-
-## Submission Cleanup
-
-Required application files, pages, complete 2016-2025 data, model artifacts,
-tests, requirements, README, and testing/change documentation should remain.
-
-The following should not appear in a clean submitted copy:
-
-- `__pycache__/` and other generated Python caches
-- `.pytest_cache/`
-- temporary Streamlit logs
-- local virtual environments and IDE settings
-
-Rollback snapshots in `change_history/` are useful during development but can
-be excluded from the final packaged submission if the evaluator does not
-require them. The partial 2020-2025 combined files are not used by the current
-dashboard; retain or exclude them according to the dataset submission rules.
-
-The parent repository `.gitignore` currently ignores `CSEE/`. Narrow or remove
-that rule before committing this project to GitHub.
-
-## Viva Presentation Notes
-
-Suggested demonstration:
-
-1. Explain the problem and 2016-2025 national data scope.
-2. Show that executive KPIs remain national while detailed charts respond to
-   regional filters.
-3. Demonstrate one school profile and explain GPA, pass rate, Division 0,
-   subject strength, and regional benchmark.
-4. Show one strong and one weak subject and state the intervention implication.
-5. Explain top/bottom rankings and why lower GPA is better.
-6. Explain solid Actual and dotted Forecast lines without presenting forecasts
-   as official results.
-7. Open Advanced Model Comparison and justify model selection using holdout
-   evidence.
-8. Present `testing_documentation.txt` and `change_log.txt` as verification and
-   engineering evidence.
-9. Open `2032 Policy Planning`, compare all three scenarios, and explain why
-   every future output is synthetic and hypothetical.
-
-Before submission, run the complete test suite and manually inspect the four
-pages at 1920x1080, 1366x768, 1024x768, tablet width, and mobile width.
+- Add localized scenario growth assumptions when authoritative demographic evidence becomes available.
